@@ -2,7 +2,7 @@
 
 **强大的 Windows 截图工具** — 截图 / 长截图 / 贴图 / OCR / 翻译
 
-一款基于 Electron 构建的现代截图工具，模仿 [PixPin](https://pixpin.cn/) 的核心功能与交互体验。
+一款基于 Electron 构建的现代截图工具。
 
 ---
 
