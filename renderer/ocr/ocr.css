@@ -1,0 +1,158 @@
+/* OCR 结果页面样式 */
+
+body {
+  background: var(--bg-base);
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+.ocr-body {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  padding: var(--space-lg);
+  overflow: hidden;
+}
+
+/* 加载状态 */
+.loading-state {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-md);
+}
+
+.loading-spinner {
+  font-size: 32px;
+}
+
+.loading-text {
+  color: var(--text-secondary);
+  font-size: 14px;
+}
+
+/* 结果状态 */
+.result-state {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+  overflow: hidden;
+}
+
+.result-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.result-info {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+}
+
+.confidence-badge {
+  padding: 2px 8px;
+  background: var(--bg-elevated);
+  border-radius: 10px;
+  font-size: 11px;
+  color: var(--text-secondary);
+}
+
+.result-actions {
+  display: flex;
+  gap: var(--space-xs);
+}
+
+.result-text {
+  flex: 1;
+  min-height: 120px;
+  padding: var(--space-md);
+  background: var(--bg-surface);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  color: var(--text-primary);
+  font-size: 14px;
+  font-family: var(--font-sans);
+  line-height: 1.6;
+  resize: none;
+  outline: none;
+  overflow-y: auto;
+}
+
+.result-text:focus {
+  border-color: var(--border-focus);
+}
+
+/* 翻译面板 */
+.translate-panel {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+  border-top: 1px solid var(--border-color);
+  padding-top: var(--space-md);
+  animation: slideUp 0.25s ease;
+}
+
+.translate-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.translate-label {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--color-accent);
+}
+
+.translate-controls {
+  display: flex;
+  align-items: center;
+  gap: var(--space-xs);
+}
+
+.translate-loading {
+  padding: var(--space-sm);
+  color: var(--text-secondary);
+  font-size: 13px;
+  text-align: center;
+}
+
+.translate-text {
+  min-height: 80px;
+  padding: var(--space-md);
+  background: var(--bg-surface);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  color: var(--text-primary);
+  font-size: 14px;
+  font-family: var(--font-sans);
+  line-height: 1.6;
+  resize: none;
+  outline: none;
+  overflow-y: auto;
+}
+
+/* 错误状态 */
+.error-state {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-md);
+}
+
+.error-icon {
+  font-size: 40px;
+}
+
+.error-text {
+  color: var(--color-danger);
+  font-size: 14px;
+}

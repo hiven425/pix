@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>Pix 设置</title>
+  <link rel="stylesheet" href="../styles/global.css">
+  <link rel="stylesheet" href="settings.css">
+</head>
+<body>
+  <!-- 标题栏 -->
+  <div class="titlebar">
+    <span class="titlebar-title">⚙️ Pix 设置</span>
+    <div class="titlebar-controls">
+      <button class="titlebar-btn close" id="btnClose" title="关闭">✕</button>
+    </div>
+  </div>
+
+  <div class="settings-container">
+    <!-- 侧边栏导航 -->
+    <nav class="settings-nav">
+      <button class="nav-item active" data-tab="general">
+        <span class="nav-icon">🎯</span>
+        <span>通用</span>
+      </button>
+      <button class="nav-item" data-tab="shortcuts">
+        <span class="nav-icon">⌨️</span>
+        <span>快捷键</span>
+      </button>
+      <button class="nav-item" data-tab="translate">
+        <span class="nav-icon">🌐</span>
+        <span>翻译</span>
+      </button>
+      <button class="nav-item" data-tab="about">
+        <span class="nav-icon">ℹ️</span>
+        <span>关于</span>
+      </button>
+    </nav>
+
+    <!-- 内容区 -->
+    <div class="settings-content">
+      <!-- 通用设置 -->
+      <div class="tab-pane active" id="tab-general">
+        <h2 class="section-title">通用设置</h2>
+
+        <div class="setting-group">
+          <div class="setting-row">
+            <div class="setting-label">
+              <span class="label-text">保存路径</span>
+              <span class="label-desc">截图默认保存位置</span>
+            </div>
+            <div class="setting-control path-control">
+              <input type="text" class="input" id="savePath" readonly>
+              <button class="btn btn-ghost btn-sm" id="btnBrowsePath">📂 浏览</button>
+            </div>
+          </div>
+
+          <div class="setting-row">
+            <div class="setting-label">
+              <span class="label-text">图片格式</span>
+              <span class="label-desc">默认截图保存格式</span>
+            </div>
+            <div class="setting-control">
+              <select class="select" id="imageFormat" style="width:140px;">
+                <option value="png">PNG（无损）</option>
+                <option value="jpg">JPEG（压缩）</option>
+                <option value="webp">WebP（高效）</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="setting-row">
+            <div class="setting-label">
+              <span class="label-text">开机自启动</span>
+              <span class="label-desc">系统启动时自动运行 Pix</span>
+            </div>
+            <div class="setting-control">
+              <button class="toggle" id="autoStart"></button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 快捷键设置 -->
+      <div class="tab-pane" id="tab-shortcuts">
+        <h2 class="section-title">快捷键设置</h2>
+
+        <div class="setting-group">
+          <div class="setting-row">
+            <div class="setting-label">
+              <span class="label-text">截图</span>
+              <span class="label-desc">区域截图快捷键</span>
+            </div>
+            <div class="setting-control">
+              <input type="text" class="input shortcut-input" id="shortcutCapture"
+                     readonly placeholder="点击后按下快捷键" style="width:160px;text-align:center;">
+            </div>
+          </div>
+
+          <div class="setting-row">
+            <div class="setting-label">
+              <span class="label-text">长截图</span>
+              <span class="label-desc">滚动截图快捷键</span>
+            </div>
+            <div class="setting-control">
+              <input type="text" class="input shortcut-input" id="shortcutScrollCapture"
+                     readonly placeholder="点击后按下快捷键" style="width:160px;text-align:center;">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 翻译设置 -->
+      <div class="tab-pane" id="tab-translate">
+        <h2 class="section-title">翻译配置</h2>
+
+        <div class="setting-group">
+          <div class="setting-row">
+            <div class="setting-label">
+              <span class="label-text">默认翻译引擎</span>
+            </div>
+            <div class="setting-control">
+              <select class="select" id="defaultEngine" style="width:180px;">
+                <option value="google">Google 翻译</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <h3 class="section-subtitle">自定义 API</h3>
+        <p class="section-desc">添加自定义翻译 API（如 DeepL、OpenAI 等）</p>
+
+        <div id="customApiList" class="api-list"></div>
+
+        <button class="btn btn-primary btn-sm" id="btnAddApi" style="margin-top: var(--space-md);">
+          ➕ 添加翻译 API
+        </button>
+
+        <!-- 添加/编辑 API 表单 -->
+        <div id="apiForm" class="api-form glass-panel" style="display:none;">
+          <h3 class="form-title">配置翻译 API</h3>
+
+          <div class="form-group">
+            <label class="form-label">名称</label>
+            <input type="text" class="input" id="apiName" placeholder="如: DeepL">
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">预设模板</label>
+            <select class="select" id="apiTemplate">
+              <option value="">自定义</option>
+              <option value="deepl">DeepL</option>
+              <option value="openai">OpenAI</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">API 密钥</label>
+            <input type="password" class="input" id="apiKey" placeholder="输入 API Key">
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">API URL</label>
+            <input type="text" class="input" id="apiUrl" placeholder="https://api.example.com/translate">
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">请求方法</label>
+            <select class="select" id="apiMethod" style="width:120px;">
+              <option value="POST">POST</option>
+              <option value="GET">GET</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">请求头 (JSON)</label>
+            <textarea class="input" id="apiHeaders" rows="3" style="resize:vertical;font-family:var(--font-mono);font-size:12px;"
+                      placeholder='{"Content-Type": "application/json"}'></textarea>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">请求体模板</label>
+            <textarea class="input" id="apiBody" rows="4" style="resize:vertical;font-family:var(--font-mono);font-size:12px;"
+                      placeholder='变量: {{text}}, {{from}}, {{to}}, {{apiKey}}'></textarea>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">响应路径</label>
+            <input type="text" class="input" id="apiResponsePath" placeholder="如: translations.0.text">
+          </div>
+
+          <div class="form-actions">
+            <button class="btn btn-ghost btn-sm" id="btnCancelApi">取消</button>
+            <button class="btn btn-primary btn-sm" id="btnSaveApi">保存</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- 关于 -->
+      <div class="tab-pane" id="tab-about">
+        <div class="about-content">
+          <div class="about-logo">📸</div>
+          <h2 class="about-name">Pix</h2>
+          <p class="about-version">v1.0.0</p>
+          <p class="about-desc">强大的 Windows 截图工具</p>
+          <div class="about-features">
+            <span class="feature-tag">📸 截图</span>
+            <span class="feature-tag">📜 长截图</span>
+            <span class="feature-tag">📌 贴图</span>
+            <span class="feature-tag">🔤 OCR</span>
+            <span class="feature-tag">🌐 翻译</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="settings.js"></script>
+</body>
+</html>

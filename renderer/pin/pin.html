@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>Pix 贴图</title>
+  <link rel="stylesheet" href="../styles/global.css">
+  <link rel="stylesheet" href="pin.css">
+</head>
+<body>
+  <div id="pinContainer" class="pin-container">
+    <img id="pinImage" class="pin-image" draggable="false" alt="贴图">
+    <!-- 缩放/透明度提示 -->
+    <div id="infoOverlay" class="info-overlay" style="display:none;">
+      <span id="infoText"></span>
+    </div>
+    <!-- 边角装饰 -->
+    <div class="pin-border"></div>
+  </div>
+
+  <script src="pin.js"></script>
+</body>
+</html>

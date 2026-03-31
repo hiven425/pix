@@ -1,0 +1,43 @@
+{
+  "name": "pix",
+  "version": "1.0.0",
+  "description": "Pix - 强大的 Windows 截图工具，支持截图、长截图、贴图、OCR、翻译",
+  "main": "main.js",
+  "scripts": {
+    "dev": "electron .",
+    "build": "electron-builder",
+    "pack": "electron-builder --dir"
+  },
+  "author": "Pix Team",
+  "license": "MIT",
+  "devDependencies": {
+    "electron": "^33.0.0",
+    "electron-builder": "^25.0.0"
+  },
+  "dependencies": {
+    "electron-store": "^8.2.0",
+    "tesseract.js": "^5.1.0"
+  },
+  "optionalDependencies": {
+    "robotjs": "^0.6.0"
+  },
+  "build": {
+    "appId": "com.pix.screenshot",
+    "productName": "Pix",
+    "win": {
+      "target": "nsis",
+      "icon": "assets/icons/icon.png"
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true
+    },
+    "files": [
+      "main.js",
+      "preload.js",
+      "src/**/*",
+      "renderer/**/*",
+      "assets/**/*"
+    ]
+  }
+}
