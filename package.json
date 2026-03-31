@@ -1,6 +1,6 @@
 {
   "name": "pix",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Pix - 强大的 Windows 截图工具，支持截图、长截图、贴图、OCR、翻译",
   "main": "main.js",
   "scripts": {
